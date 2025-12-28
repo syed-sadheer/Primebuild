@@ -1,0 +1,305 @@
+/* ================================
+   Primebuild UI (Pro) - Base CSS
+   Works with your existing classes:
+   .layout .sidebar .content .card .center-card .table .btn .btn-sm etc.
+================================ */
+
+/* 1) Base */
+:root{
+  --bg:#f5f7fb;
+  --card:#ffffff;
+  --text:#0f172a;
+  --muted:#64748b;
+  --border:#e2e8f0;
+  --primary:#1d4ed8;
+  --danger:#dc2626;
+
+  --radius:14px;
+  --shadow: 0 1px 2px rgba(15,23,42,.06), 0 10px 24px rgba(15,23,42,.08);
+}
+
+*{ box-sizing:border-box; }
+
+html{ font-size:14px; }
+
+body{
+  margin:0;
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, "Noto Sans", "Liberation Sans", sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.45;
+}
+
+/* Links */
+a{ color:var(--primary); text-decoration:none; }
+a:hover{ text-decoration:underline; }
+
+/* Helpers */
+.center{ text-align:center; }
+.right{ text-align:right; }
+.muted{ color:var(--muted); }
+.small{ font-size:12px; }
+
+/* 2) Layout (keep your sidebar structure intact) */
+.topbar{
+  height:56px;
+  background:var(--card);
+  border-bottom:1px solid var(--border);
+  display:flex;
+  align-items:center;
+  padding:0 16px;
+  position:sticky;
+  top:0;
+  z-index:10;
+}
+
+.topbar-left,.topbar-center,.topbar-right{ flex:1; }
+.topbar-center{ text-align:center; font-weight:700; }
+.topbar-right{ display:flex; justify-content:flex-end; gap:10px; align-items:center; }
+
+.layout{
+  display:flex;
+  min-height:calc(100vh - 56px);
+}
+
+.sidebar{
+  width:240px;
+  background:#0b1220;
+  color:#fff;
+  padding:14px;
+}
+
+.navtitle{
+  margin:14px 10px 6px;
+  font-size:11px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:rgba(255,255,255,.55);
+}
+
+.navitem{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  color:rgba(255,255,255,.85);
+  padding:10px 12px;
+  border-radius:12px;
+  margin:4px 0;
+}
+.navitem:hover{
+  background:rgba(255,255,255,.08);
+  color:#fff;
+}
+
+.content{
+  flex:1;
+  padding:18px 18px 28px;
+  overflow-x:hidden; /* prevents random horizontal bar */
+}
+
+/* 3) Cards / Headings */
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:18px;
+  box-shadow:var(--shadow);
+}
+
+.center-card{
+  max-width:1280px;
+  width:100%;
+  margin:0 auto;
+}
+
+/* Make headers look compact/pro */
+h1,h2,h3{ margin:0; color:var(--text); }
+h2{ font-size:22px; line-height:1.2; }
+
+/* 4) Forms */
+label{
+  display:block;
+  font-size:12px;
+  color:var(--muted);
+  margin:0 0 6px;
+}
+
+input, select, textarea{
+  width:100%;
+  padding:9px 10px;
+  border:1px solid var(--border);
+  border-radius:12px;
+  background:#fff;
+  color:var(--text);
+  font-size:14px;
+  outline:none;
+}
+
+input:focus, select:focus, textarea:focus{
+  border-color:rgba(29,78,216,.45);
+  box-shadow:0 0 0 3px rgba(29,78,216,.12);
+}
+
+textarea{ min-height:90px; resize:vertical; }
+
+/* 5) Buttons */
+.btn, .btn-light, .btn-secondary{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  padding:9px 12px;
+  border-radius:12px;
+  font-weight:700;
+  font-size:13px;
+  border:1px solid transparent;
+  cursor:pointer;
+  user-select:none;
+  text-decoration:none;
+}
+
+.btn{
+  background:var(--text);
+  color:#fff;
+}
+.btn:hover{ filter:brightness(.95); text-decoration:none; }
+
+.btn-light{
+  background:#f1f5f9;
+  color:var(--text);
+  border-color:var(--border);
+}
+.btn-light:hover{ filter:brightness(.98); text-decoration:none; }
+
+.btn-secondary{
+  background:var(--primary);
+  color:#fff;
+}
+.btn-secondary:hover{ filter:brightness(.95); text-decoration:none; }
+
+/* Small buttons in tables */
+.btn-sm{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:6px 10px;
+  border-radius:12px;
+  border:1px solid var(--border);
+  background:#fff;
+  color:var(--text);
+  font-size:12px;
+  font-weight:700;
+  text-decoration:none;
+}
+.btn-sm:hover{ background:#f8fafc; text-decoration:none; }
+
+.btn-sm.danger{
+  border-color:rgba(220,38,38,.35);
+  color:var(--danger);
+}
+.btn-sm.danger:hover{ background:#fff1f2; }
+
+/* 6) Alerts */
+.alert{
+  background:#fff7ed;
+  border:1px solid #fed7aa;
+  padding:10px 12px;
+  border-radius:12px;
+  margin:12px 0;
+  color:#7c2d12;
+}
+.alert.success{
+  background:#ecfdf5;
+  border-color:#a7f3d0;
+  color:#065f46;
+}
+
+/* 7) Tables (THIS fixes your horizontal scroll + “big” look) */
+.table{
+  width:100%;
+  margin-top:10px;
+  border-collapse:separate;      /* needed for radius to work */
+  border-spacing:0;
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  overflow:hidden;
+  background:#fff;
+}
+
+.table thead th{
+  background:#f8fafc;
+  color:var(--muted);
+  font-weight:800;
+  font-size:12.5px;
+  letter-spacing:.02em;
+  border-bottom:1px solid var(--border);
+}
+
+.table th, .table td{
+  padding:10px 12px;
+  border-bottom:1px solid var(--border);
+  vertical-align:middle;
+  font-size:13px;
+}
+
+/* IMPORTANT: allow wrapping (removes forced horizontal scrollbar) */
+.table th, .table td{
+  white-space:normal;
+  word-break:break-word;
+}
+
+/* Keep numbers aligned, don’t wrap numbers */
+.table th.right, .table td.right{
+  text-align:right;
+  white-space:nowrap;
+}
+
+/* Row hover */
+.table tbody tr:hover td{ background:#fbfdff; }
+
+/* remove last row border */
+.table tbody tr:last-child td{ border-bottom:none; }
+
+/* Action column: keep buttons on one line if possible */
+.table td:last-child{
+  white-space:nowrap;
+}
+.table td:last-child .btn-sm{ margin-right:6px; }
+.table td:last-child .btn-sm:last-child{ margin-right:0; }
+
+/* Mobile: allow action buttons to wrap instead of causing scroll */
+@media (max-width: 900px){
+  .content{ padding:14px; }
+  .center-card{ max-width:100%; }
+  h2{ font-size:20px; }
+  .table td:last-child{ white-space:normal; }
+}
+/* ===== FIX: Stop ugly header word-breaking ===== */
+
+/* If any other CSS forces fixed layout, this overrides it */
+.table{
+  table-layout: auto !important;
+  min-width: 1200px;              /* prevents squeezing into tiny columns */
+}
+
+/* Headings must NEVER break into letters */
+.table thead th{
+  white-space: nowrap !important;
+  word-break: normal !important;
+  overflow-wrap: normal !important;
+}
+
+/* Data should also stay in one line (looks clean) */
+.table td{
+  white-space: nowrap;
+  word-break: normal !important;
+  overflow-wrap: normal !important;
+}
+
+/* If you want some long text to wrap later, add class="wrap" on that <td> */
+.table td.wrap{
+  white-space: normal !important;
+}
+
+/* Make sure only the table scrolls, not the whole page */
+.table-wrap{ overflow-x:auto; }
